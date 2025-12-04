@@ -1,10 +1,32 @@
-
-"use client"
-import React from 'react'
+"use client";
+import React from "react";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
 
 const Filter = () => {
-    return (
-        <div>Filter</div>
-    )
-}
-export default Filter
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const handeleFilter = (value: string) => {
+    const params = new URLSearchParams(searchParams);
+    params.set("sort", value);
+    router.push(`${pathname}?{params.toString()}`, { scroll: false });
+  };
+  return (
+    <div className="flex items-center justify-end gap-2 text-sm text-gray-500 my-6">
+      <span>Sort by:</span>
+      <select
+        name="sort"
+        id="sort"
+        className="ring-1 ring-gray-200 shadow-md p-1 rounded-sm"
+        onChange={(e) => handeleFilter(e.target.value)}
+      >
+        <option value="newest">Newest</option>
+        <option value="oldesr">Oldest</option>
+        <option value="asc">Price: Low to hiht</option>
+        <option value="desc">Price: Hight to Low</option>
+      </select>
+    </div>
+  );
+};
+export default Filter;
