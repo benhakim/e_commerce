@@ -1,88 +1,88 @@
-"use client";
-import { CartItemsType } from "@/types";
-import { ArrowRight } from "lucide-react";
-import { useRouter, useSearchParams } from "next/navigation";
-import React from "react";
-import ShippingForm from "@/components/ShippingForm";
-import PaymentForm from "@/components/PaymentForm";
-import { useState } from "react";
-import { Trash2 } from "lucide-react";
-import Image from "next/image";
+'use client'
+import { CartItemsType } from '@/types'
+import { ArrowRight } from 'lucide-react'
+import { useRouter, useSearchParams } from 'next/navigation'
+import React from 'react'
+import ShippingForm from '@/components/ShippingForm'
+import PaymentForm from '@/components/PaymentForm'
+import { useState } from 'react'
+import { Trash2 } from 'lucide-react'
+import Image from 'next/image'
 const steps = [
   {
     id: 1,
-    title: "Shopping Cart",
+    title: 'Shopping Cart',
   },
   {
     id: 2,
-    title: "Shipping Address",
+    title: 'Shipping Address',
   },
   {
     id: 3,
-    title: "Payment Method",
+    title: 'Payment Method',
   },
-];
+]
 const cartItems: CartItemsType = [
   {
     id: 1,
-    name: "Adidas CoreFit T-Shirt",
+    name: 'Adidas CoreFit T-Shirt',
     shortDescription:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+      'Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.',
     description:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+      'Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.',
     price: 39.9,
-    sizes: ["s", "m", "l", "xl", "xxl"],
-    colors: ["gray", "purple", "green"],
+    sizes: ['s', 'm', 'l', 'xl', 'xxl'],
+    colors: ['gray', 'purple', 'green'],
     images: {
-      gray: "/products/1g.png",
-      purple: "/products/1p.png",
-      green: "/products/1gr.png",
+      gray: '/products/1g.png',
+      purple: '/products/1p.png',
+      green: '/products/1gr.png',
     },
     quantity: 1,
-    selectedSize: "m",
-    selectedColor: "gray",
+    selectedSize: 'm',
+    selectedColor: 'gray',
   },
   {
     id: 2,
-    name: "Puma Ultra Warm Zip",
+    name: 'Puma Ultra Warm Zip',
     shortDescription:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+      'Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.',
     description:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+      'Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.',
     price: 59.9,
-    sizes: ["s", "m", "l", "xl"],
-    colors: ["gray", "green"],
-    images: { gray: "/products/2g.png", green: "/products/2gr.png" },
+    sizes: ['s', 'm', 'l', 'xl'],
+    colors: ['gray', 'green'],
+    images: { gray: '/products/2g.png', green: '/products/2gr.png' },
     quantity: 1,
-    selectedSize: "l",
-    selectedColor: "gray",
+    selectedSize: 'l',
+    selectedColor: 'gray',
   },
   {
     id: 3,
-    name: "Nike Air Essentials Pullover",
+    name: 'Nike Air Essentials Pullover',
     shortDescription:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+      'Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.',
     description:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+      'Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.',
     price: 69.9,
-    sizes: ["s", "m", "l"],
-    colors: ["green", "blue", "black"],
+    sizes: ['s', 'm', 'l'],
+    colors: ['green', 'blue', 'black'],
     images: {
-      green: "/products/3gr.png",
-      blue: "/products/3b.png",
-      black: "/products/3bl.png",
+      green: '/products/3gr.png',
+      blue: '/products/3b.png',
+      black: '/products/3bl.png',
     },
     quantity: 1,
-    selectedSize: "l",
-    selectedColor: "black",
+    selectedSize: 'l',
+    selectedColor: 'black',
   },
-];
+]
 
 const CartPage = () => {
-  const searchParams = useSearchParams();
-  const router = useRouter();
-  const [shippingForm, setShippingForm] = useState(null);
-  const activeStep = parseInt(searchParams.get("step") || "1");
+  const searchParams = useSearchParams()
+  const router = useRouter()
+  const [shippingForm, setShippingForm] = useState(null)
+  const activeStep = parseInt(searchParams.get('step') || '1')
 
   return (
     <div className="flex flex-col gap-8 items-center justify-center mt-12">
@@ -94,18 +94,18 @@ const CartPage = () => {
           <div
             key={step.id}
             className={`flex items-center border-b-2 gap-2 pb-4 ${
-              step.id === activeStep ? "border-gray-800" : "border-gray-400"
+              step.id === activeStep ? 'border-gray-800' : 'border-gray-400'
             }`}
           >
             <div
               className={`w-6 h-6 rounded-full text-white p-4 flex items-center justify-center 
-              ${step.id === activeStep ? "bg-gray-800" : "bg-gray-200"} `}
+              ${step.id === activeStep ? 'bg-gray-800' : 'bg-gray-200'} `}
             >
               {step.id}
             </div>
             <p
               className={`text-sm font-medium ${
-                step.id === activeStep ? "text-gray-800" : "text-gray-400"
+                step.id === activeStep ? 'text-gray-800' : 'text-gray-400'
               }`}
             >
               {step.title}
@@ -125,31 +125,46 @@ const CartPage = () => {
               <div className="flex items-center justify-between" key={item.id}>
                 {/* Item Image and Details */}
                 <div className="flex gap-8">
-                    <div className="relative w-32 h-32 bg-gray-50 rounded-lg overflow-hidden">
-                        <Image src={item.images[item.selectedColor]}
-                        alt={item.name} fill className="object-contain" />
+                  <div className="relative w-32 h-32 bg-gray-50 rounded-lg overflow-hidden">
+                    <Image
+                      src={item.images[item.selectedColor]}
+                      alt={item.name}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                  {/* Item Details */}
+                  <div className="flex flex-col justify-between">
+                    <div className="flex flex-col gap-1">
+                      <p className="text-sm font-medium">{item.name}</p>
+                      <p className="text-xs text-gray-500">
+                        {' '}
+                        :Quantity{item.quantity}
+                      </p>
+                      <p className="text-xs text-gray-500">
+                        {' '}
+                        Size: {item.selectedSize}
+                      </p>
+                      <p className="text-xs text-gray-500">
+                        {' '}
+                        Color: {item.selectedColor}
+                      </p>
+                      <p className="font-medium">${item.price.toFixed(2)}</p>
                     </div>
-                    {/* Item Details */}
-                    <div className="flex flex-col justify-between">
-                        <div className="flex flex-col gap-1">
-                        <p className="text-sm font-medium">{item.name}</p>
-                        <p className="text-xs text-gray-500">{" "}:Quantity{item.quantity}</p>
-                        <p className="text-xs text-gray-500">{" "}Size: {item.selectedSize}</p>
-                        <p className="text-xs text-gray-500">{" "}Color: {item.selectedColor}</p>
-                        <p className="font-medium">${item.price.toFixed(2)}</p>
-                        </div>
-                    </div>
+                  </div>
                 </div>
 
                 {/* Delete Button */}
-                <button className="w-8 h-8 rounded-full text-red-400 bg-red-100
-                flex items-center justify-center cursor-pointer hover:bg-red-200 transition-all duration-300" >
+                <button
+                  className="w-8 h-8 rounded-full text-red-400 bg-red-100
+                flex items-center justify-center cursor-pointer hover:bg-red-200 transition-all duration-300"
+                >
                   <Trash2 className="w-3 h-3" />
                 </button>
               </div>
             ))
           ) : activeStep === 2 ? (
-            <ShippingForm />
+            <ShippingForm setShippingForm={setShippingForm} />
           ) : activeStep === 3 && shippingForm ? (
             <PaymentForm />
           ) : (
@@ -159,7 +174,7 @@ const CartPage = () => {
           )}
         </div>
         {/* Cart Details */}
-        
+
         <div
           className="w-full lg:w-5/12 shadow-lg border-1 border-gray-100
               p-8 rounded-lg flex flex-col gap-8 h-max"
@@ -172,7 +187,7 @@ const CartPage = () => {
             <div className="flex justify-between text-sm  ">
               <p className=" text-gray-500">Subtotal</p>
               <p className=" font-medium">
-                ${" "}
+                ${' '}
                 {cartItems
                   .reduce((acc, item) => acc + item.price * item.quantity, 0)
                   .toFixed(2)}
@@ -190,11 +205,11 @@ const CartPage = () => {
             <div className="flex justify-between  ">
               <p className=" text-gray-800 font-semibold">Total</p>
               <p className=" font-medium">
-                ${" "}
+                ${' '}
                 {(
                   cartItems.reduce(
                     (acc, item) => acc + item.price * item.quantity,
-                    0,
+                    0
                   ) -
                   10 +
                   10
@@ -204,7 +219,7 @@ const CartPage = () => {
           </div>
           {activeStep === 1 && (
             <button
-              onClick={() => router.push("/cart?step=2", { scroll: false })}
+              onClick={() => router.push('/cart?step=2', { scroll: false })}
               className=" w-full h-8  bg-gray-800 hover:bg-gray-900 transition-all
             duration-300 text-white p-2 rounded-lg cursor-pointer flex items-center justify-center"
             >
@@ -215,6 +230,6 @@ const CartPage = () => {
         </div>
       </div>
     </div>
-  );
-};
-export default CartPage;
+  )
+}
+export default CartPage
